@@ -18,9 +18,29 @@
         <div class="jumbotron text-center">
             <h1 class="display-4">Timed Quiz</h1>
             <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-            <!-- <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
+
+            <hr class="my-4">
+
+            <a class="btn btn-primary btn-lg mb-4" id="startQuiz" href="#" role="button">Start Quiz</a>
+            <p id="question">Questions will render here</p>
+
+            <hr class="my-4">
+            
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <p>Answer choices will render below</p>
+                    <div class="list-group">
+                        <button type="button" class="list-group-item list-group-item-action active" id="answerChoice1">
+                          Cras justo odio
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-action" id="answerChoice2">Dapibus ac facilisis in</button>
+                        <button type="button" class="list-group-item list-group-item-action" id="answerChoice3">Morbi leo risus</button>
+                        <button type="button" class="list-group-item list-group-item-action" id="answerChoice4">Porta ac consectetur ac</button>
+                      </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
           </div>
     </main>
 
