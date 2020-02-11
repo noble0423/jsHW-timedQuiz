@@ -6,6 +6,10 @@ let countdownTimer = 60;
 // Index to track question we are on
 let questionIndex = 0;
 
+// Variables that track number of correct answers and incorrect answers
+let answeredCorrectly = 0;
+let answeredIncorrectly = 0;
+
 // HTML tie-ins
 const $startQuizBtn = document.getElementById("startQuiz");
 const $countdownTimerEl = document.getElementById("countdownTimer");
@@ -14,8 +18,9 @@ const $answerChoice1 = document.getElementById("answerChoice1");
 const $answerChoice2 = document.getElementById("answerChoice2");
 const $answerChoice3 = document.getElementById("answerChoice3");
 const $answerChoice4 = document.getElementById("answerChoice4");
+const $listGroupEl = document.querySelector(".list-group");
 
-// Var = Quiz Object that includes questions, corresponding answer choices, and the correct answer
+// Var = Quiz Array of Objects that includes questions, corresponding answer choices, and the correct answer
 const quiz = [
     {
         // question1: {
@@ -26,7 +31,7 @@ const quiz = [
                 "question 1, answer choice 3", 
                 "question 1, answer choice 4"
             ],
-            correctAnswer: "",
+            correctAnswer: "a",
         // },
     },
     {
@@ -38,7 +43,7 @@ const quiz = [
                 "question 2, answer choice 3", 
                 "question 2, answer choice 4"
             ],
-            correctAnswer: "",
+            correctAnswer: "b",
         // },
     },
     {
@@ -50,7 +55,7 @@ const quiz = [
                 "question 3, answer choice 3", 
                 "question 3, answer choice 4"
             ],
-            correctAnswer: "",
+            correctAnswer: "c",
         // },
     },
     {
@@ -62,7 +67,7 @@ const quiz = [
                 "question 4, answer choice 3", 
                 "question 4, answer choice 4"
             ],
-            correctAnswer: "",
+            correctAnswer: "d",
         // },
     },
     {
@@ -74,7 +79,7 @@ const quiz = [
                 "question 5, answer choice 3", 
                 "question 5, answer choice 4"
             ],
-            correctAnswer: "",
+            correctAnswer: "a",
         // },
     },
 ];
@@ -121,8 +126,7 @@ function runCountdownTimer() {
     }, 1000);
 };
 
-// Render questions and answer function
-// TODO: change to accept an arg that will cycle through quiz object
+// Render questions and answers function using the index variable (questionIndex)
 function renderTrivia(whatQuestionAreWeOn) {
 
     console.log(whatQuestionAreWeOn);
@@ -146,6 +150,18 @@ function renderTrivia(whatQuestionAreWeOn) {
 };
 
 // Check answer function
+function checkAnswer(userSelection) {
+    // console.log(userSelection);
+    if (userSelection === quiz[questionIndex].correctAnswer) {
+        console.log("correct");
+        answeredCorrectly++;
+    }
+    else {
+        console.log("wrong. we were looking for ", quiz[questionIndex].correctAnswer)
+        countdownTimer -= 10;
+        answeredIncorrectly++;
+    }
+}
 
 // Display quiz stats function
 function displayQuizStats() {
@@ -181,3 +197,12 @@ $startQuizBtn.addEventListener("click", function(event) {
 });
 
 // Button click listeners to grab the value of the answer button using data attribute
+$listGroupEl.addEventListener("click", function(event) {
+    let element = event.target;
+
+    if (element.matches("button")) {
+        let userChoice = element.getAttribute("data-choice");
+        // pass userCjoice to checkAnswer function
+        checkAnswer(userChoice);
+    }
+})
