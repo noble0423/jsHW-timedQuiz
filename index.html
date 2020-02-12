@@ -21,20 +21,22 @@
 
             <hr class="my-4">
 
-            <a class="btn btn-primary btn-lg mb-4" id="startQuiz" href="#" role="button">Start Quiz</a>
-            <h2 id="timeRemaining">Seconds Remaining: <span id="countdownTimer">60</span></h2>
-            <p class="my-5" id="question">Questions will render here</p>
+            <div id="clearForGif">
+                <a class="btn btn-primary btn-lg mb-4" id="startQuiz" href="#" role="button">Start Quiz</a>
+                <h2 id="timeRemaining">Seconds Remaining: <span id="countdownTimer">60</span></h2>
+                <p class="my-5" id="question">Questions will render here</p>
+            </div>
 
             <hr class="my-4">
             
             <div class="row">
                 <div class="col-md-4"></div>
-                <div class="col-md-4">
+                <div class="col-md-4" id="clearForStats">
                     <p>Answer choices will render below</p>
                     <div class="list-group">
                         <button 
                             type="button" 
-                            class="list-group-item list-group-item-action active" 
+                            class="list-group-item list-group-item-action" 
                             id="answerChoice1"
                             data-choice="a">
                             Cras justo odio
@@ -62,7 +64,8 @@
                         </button>
                       </div>
                 </div>
-                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                </div>
             </div>
           </div>
     </main>
